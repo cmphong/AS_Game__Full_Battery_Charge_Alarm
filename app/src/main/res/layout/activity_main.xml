@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/myBackgroundColor"
+    >
+
+    <!-- HEADER ============================================ -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="44dp"
+        android:paddingBottom="10dp"
+        android:paddingHorizontal="10dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/iv_info_app"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_info"
+            android:tint="@color/white"
+            android:background="@drawable/ripple_button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/tv_title"
+            />
+
+    </RelativeLayout>
+
+    <!--  Info Battery ==========================================  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_flash"/>
+            <TextView
+                android:id="@+id/tv_voltage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0v"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_battery"/>
+            <TextView
+                android:id="@+id/tv_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5000 mAh"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_temperature_light"/>
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0&#176;C"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Count timer ======================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:id="@+id/tv_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01:10:44"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+
+    <!--  Battery Status =======================================  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_animation_charge"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:lottie_rawRes="@raw/animation_battery_charge"
+            app:lottie_loop="true"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <ImageView
+            android:id="@+id/iv_battery_level"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/level_1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_battery_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textStyle="bold"
+            android:textColor="#de6409"
+            android:textSize="32dp"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
+
+    <!--  Control ===============================  -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_label_alarm"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_alarm"
+            android:layout_alignParentStart="true"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="80dp"
+            android:layout_toEndOf="@id/iv_label_alarm"
+            android:layout_toStartOf="@id/sw_on_off"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Full_Battery_Alarm"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Ringing_alarm_when_your_battery_is_100_charged"
+                android:textColor="@color/grey500"
+                />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_on_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/iv_alarm_volume"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_sound_min"/>
+            <TextView
+                android:id="@+id/tv_alarm_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Alarm_Volume"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:paddingStart="10dp"
+                />
+        </LinearLayout>
+        <SeekBar
+            android:id="@+id/sb_alarm_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="3"
+            android:max="15"
+            android:min="0"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+    <!-- Animation Wave =============================================== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        >
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_animation_wave"
+            android:layout_width="900dp"
+            android:layout_height="140dp"
+            app:lottie_rawRes="@raw/animation_cyan_wave"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            android:scaleType="fitXY"
+            app:lottie_speed=".1"/>
+
+        <FrameLayout
+            android:id="@+id/fl_ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:minWidth="320dp"
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            >
+<!--            <com.google.android.gms.ads.AdView-->
+<!--                xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--                android:id="@+id/adView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                ads:adSize="BANNER"-->
+<!--                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">-->
+<!--            </com.google.android.gms.ads.AdView>-->
+<!--             REAL: ads:adUnitId="ca-app-pub-9120003890050576/4463121829"-->
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

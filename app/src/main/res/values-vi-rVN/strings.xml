@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Báo Pin Đầy</string>
+    <string name="Full_Battery_Alert_is_running">Báo Pin Đầy đang chạy...</string>
+    <string name="Tap_for_more_infomation">Chạm vào để xem thông tin hoặc tắt thông báo</string>
+    <string name="Full_Battery_Alarm">Báo đầy Pin</string>
+    <string name="Ringing_alarm_when_your_battery_is_100_charged">(Chuông sẽ báo khi Pin đã được sạc đầy 100%)</string>
+    <string name="Version">Phiên bản</string>
+    <string name="Alarm_Volume">Âm lượng báo</string>
+    <string name="Full_Battery">Pin đầy</string>
+
+    <string name="Tutorial_How_to_Control_Background_Running_Apps">
+        [Hướng dẫn] Cài đặt cho ứng dụng chạy nền cho người dùng Xiaomi
+    </string>
+    <string name="Tutorial_introduce"><b>Hello Mi Fans</b>,
+        \nHãy tưởng tượng, nếu các ứng dụng như Zalo, Messenger,...
+        mà không chạy nền thì chúng ta sẽ bỏ lỡ các tin nhắn
+        hoặc cuộc gọi quan trọng chỉ vì chúng không chạy nền. Trên
+        các thiết bị Xiaomi, hãng đã tích hợp tính năng quản lý
+        này để làm cho người dùng dễ dàng quản lý các ứng dụng trên
+        thiết bị của mình, chúng ta có thể hạn chế chạy nền các
+        ứng dụng không cần thiết để tiết kiệm pin và tăng hiệu suất
+        của thiết bị, cũng như cho phép ứng dụng nào sẽ được chạy nền
+        để nhận những thông báo quan trọng như tin nhắn, cuộc gọi,
+        hoặc tính năng thông báo pin đầy của chính ứng dụng này.
+        vì vậy để nhận được thông báo pin đầy trong thời gian sạc pin,
+        bạn hãy thực hiện các bước sau:
+    </string>
+
+    <string name="Tutorial_Lock_App_in_Recent">
+        <b>1. Khóa ứng dụng trong "Ứng dụng gần đây"</b>
+        \nKhi bạn đang tạm thời chạy một ứng dụng và không muốn xóa
+        ứng dụng đó khỏi danh sách Gần đây, thì bạn chỉ cần khóa
+        ứng dụng đó trong danh sách Gần đây.
+        \nĐể khóa ứng dụng trong Gần đây, hãy làm theo các bước sau đây:
+        \n&#8226;&#32;Nhấn vào biểu tượng Recent
+        \n&#8226;&#32;Nhấn và giữ lên ứng dụng "Báo Pin Đầy"
+        \n&#8226;&#32;Nhấn vào biểu tưởng hình Ổ Khóa
+        \nBây giờ Ứng dụng này đã được khóa, bạn đừng vuốt để xóa nó khi sạc pin nhé
+    </string>
+
+    <string name="Tutorial_Enable_Autostart" translatable="false">
+        <b>2. Bật Tự khởi chạy</b>
+        \nNếu chúng ta không bật chế độ này thì Ứng dụng
+        của chúng ta sẽ bị Hệ thống tạm dừng sau một thời gian khóa
+        màn hình, dẫn đến ta sẽ không nhận được thông báo khi Pin
+        được sạc đầy.
+        \nĐể bật tính năng này, hãy làm theo các bước sau:
+        \n&#8226;&#32;Vào Cài đặt hệ thống
+        \n&#8226;&#32;Chọn "Ứng dụng"
+        \n&#8226;&#32;Chọn tiếp "Ứng dụng"
+        \n&#8226;&#32;Chọn vào ứng dụng "Báo Pin Đầy"
+        \n&#8226;&#32;Sau đó bật "Tự khởi chạy"
+    </string>
+
+    <string name="Tutorial_App_Battery_Saver" translatable="false">
+        <b>3. Tắt Tiết kiệm Pin cho Ứng dụng</b>
+        \nNếu chúng ta không tắt chế độ này thì khi trình "Tiết kiệm pin"
+        hoạt động (là khi pin còn ở mức dưới 20\%)
+        thì bạn sẽ không thể nhận được thông báo từ ứng dụng này khi Pin
+        được sạc đầy.
+        \nĐể tắt tính năng này, hãy làm theo các bước sau:
+        \n&#8226;&#32;Vào Cài đặt hệ thống
+        \n&#8226;&#32;Chọn "Ứng dụng"
+        \n&#8226;&#32;Chọn tiếp "Ứng dụng"
+        \n&#8226;&#32;Chọn vào ứng dụng "Báo Pin Đầy"
+        \n&#8226;&#32;Ở phần "Tiết kiệm pin", ta chọn "Không hạn chế"
+        \nVậy là xong.
+    </string>
+
+</resources>

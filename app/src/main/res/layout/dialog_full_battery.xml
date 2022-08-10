@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:id="@+id/dialog_full_battery_ll_container"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        >
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_alert_on"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            app:lottie_rawRes="@raw/animation_alert_on"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_speed="1.5"
+            android:layout_centerHorizontal="true"
+            />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_notice_bell"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:lottie_rawRes="@raw/animation_notification_bell"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            android:layout_alignEnd="@id/lottie_alert_on"
+            android:layout_alignStart="@id/lottie_alert_on"
+            android:layout_alignBottom="@id/lottie_alert_on"
+            android:layout_alignTop="@id/lottie_alert_on"
+            app:lottie_speed="1.34"
+            android:scaleX=".4"
+            android:scaleY=".4"
+            />
+
+
+            </RelativeLayout>
+        </LinearLayout>

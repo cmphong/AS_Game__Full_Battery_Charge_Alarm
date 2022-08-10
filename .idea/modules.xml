@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Full_Battery_Charge_Alarm.iml" filepath="$PROJECT_DIR$/.idea/modules/Full_Battery_Charge_Alarm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Full_Battery_Charge_Alarm.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Full_Battery_Charge_Alarm.app.iml" />
+    </modules>
+  </component>
+</project>

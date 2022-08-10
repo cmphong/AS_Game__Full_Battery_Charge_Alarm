@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="10dp"
+    android:background="#ffff"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            >
+            <ImageView
+                android:id="@+id/iv_logo_custom_notification"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/ic_logo"
+                android:scaleType="fitCenter"
+                />
+
+            <TextView
+                android:id="@+id/tv_title_custom_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Full_Battery_Alert_is_running"
+                style="@style/TextAppearance.Compat.Notification.Title"
+                android:layout_toEndOf="@id/iv_logo_custom_notification"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_message_custom_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Tap_for_more_infomation"
+            style="@style/TextAppearance.Compat.Notification.Info"
+            android:layout_below="@id/tv_title_custom_notification"
+            android:layout_marginTop="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:background="@drawable/bg_rectangle_radius10_white"
+        >
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/animation_fully_battery_38x38"
+            />
+    </LinearLayout>
+</RelativeLayout>
