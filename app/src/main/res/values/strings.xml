@@ -7,61 +7,29 @@
     <string name="Full_Battery_Alarm">Full Battery Alarm</string>
     <string name="Ringing_alarm_when_your_battery_is_100_charged">(Automatically rings an alarm when your battery is 100% charged)</string>
     <string name="Version">Version</string>
-    <string name="v1_0_0" translatable="false">v1.0.0</string>
     <string name="Alarm_Volume">Alarm Volume</string>
     <string name="Full_Battery">Full Battery</string>
 
-    <string name="Tutorial_How_to_Control_Background_Running_Apps">
-        [Tutorial] How to Control Background Running Apps in MIUI
+    <string name="Note_if_you_are_using">
+        If you are using Huawei, OnePlus, Xiaomi or Meizu, you may need to follow the following instructions to help prevent unwanted termination of the app/alarm or other issues:
     </string>
-
-    <string name="Tutorial_introduce"><b>Hello Mi Fans</b>,
-        \nManaging background running apps is one of the most useful
-        features of MIUI. It was not an easy task before when we had
-        no control over background running apps. Most of the time
-        unnecessary apps misuse system space and keep running in the
-        background, and sometimes we miss important notifications
-        because the app is not running in the background. To manage
-        this and make everything friendly, MIUI brings the background
-        running apps managing feature.<br />
-        \nYou can manage which apps will auto start and which apps will
-        not. You can also lock apps in the recent task list to keep the
-        apps always running. There is another option to manage app
-        background restriction while battery saver is on. Let\'s start…
+    <string name="For_Xiaomi_devices">
+        &#8226;&#32;For Xiaomi devices
     </string>
-
-
-
-    <string name="Tutorial_Lock_App_in_Recent">
-        <b>1. Lock Apps in Recent</b>
-        \nWhen you are temporarily running an app and don\'t want to clear the app from the Recent list,
-        then simply lock the app in the Recent list. To lock apps in Recent, follow the below steps...
-        \n&#8226;&#32;Go to Recent
-        \n&#8226;&#32;Tap and hold on the app
-        \n&#8226;&#32;Tap on the lock icon
-        \n&#8226;&#32;The app is now locked
+    <string name="For_Huawei_devices">
+        &#8226;&#32;For Huawei devices
     </string>
-
-    <string name="Tutorial_Enable_Autostart">
-        <b>2. MIUI Autostart</b>
-        \nSome apps may incorrectly indicate that MIUI has prevented
-        them to start in background, or apps stopped their background
-        activity after a certain time of locking the screen or push
-        notifications are not instantly coming after cleaning the RAM.
-        Then just follow the below steps to solve this problem.
-        Open Settings
-        \n&#8226;&#32;Go to Apps
-        \n&#8226;&#32;Go to Autostart
-        \n&#8226;&#32;Enable desired apps
+    <string name="For_Samsung_devices">
+        &#8226;&#32;For Samsung devices
     </string>
-
-    <string name="Tutorial_App_Battery_Saver">
-        <b>3. App Battery Saver</b>
-        \nWhen the battery saver is active you may not receive notifications from some apps. Because by default MIUI battery saver restricts those apps to run in the background. To keep running those apps in this condition, you need to turn off restriction for the apps from App battery saver settings.
-        \n&#8226;&#32;Go to Settings
-        \n&#8226;&#32;Battery &#38; performance
-        \n&#8226;&#32;Choose apps
-        \n&#8226;&#32;Select apps and set \"No restrictions\"
+    <string name="For_Oneplus_devices">
+        &#8226;&#32;For OnePlus devices
+    </string>
+    <string name="For_Meizu_devices">
+        &#8226;&#32;For Meizu devices
+    </string>
+    <string name="For_Oppo_devices">
+        &#8226;&#32;For Oppo devices
     </string>
 
 
@@ -69,5 +37,7 @@
     <!-- ===================================================== -->
     <string name="adMob_unitID_TEST_AD" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="adMob_unitID_REAL_AD" translatable="false">ca-app-pub-9120003890050576/4463121829</string>
+<!--    <string name="adMob_unitID_REAL_AD" translatable="false">ca-app-pub-9120003890050576/1405164907</string>-->
+
 
 </resources>

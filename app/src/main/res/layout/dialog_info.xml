@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_dialog_info_app_container"
+    >
+
+    <TextView
+        android:id="@+id/tv_dialog_info_app_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Version"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:background="@color/grey600"
+        android:padding="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Note_if_you_are_using"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_dialog_info_app_content_xiaomi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/For_Xiaomi_devices"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_dialog_info_app_content_samsung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/For_Samsung_devices"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_dialog_info_app_content_huawei"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/For_Huawei_devices"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_dialog_info_app_content_oneplus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/For_Oneplus_devices"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:id="@+id/tv_dialog_info_app_content_meizu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/For_Meizu_devices"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_dialog_info_app_content_oppo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/For_Oppo_devices"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_dialog_info_app_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:backgroundTint="@color/blueA400"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>

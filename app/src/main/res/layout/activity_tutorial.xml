@@ -1,111 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="10dp"
+    android:orientation="vertical"
     android:paddingTop="44dp"
+    android:paddingHorizontal="10dp"
     android:paddingBottom="10dp"
     android:background="@color/myBackgroundColor"
-    android:gravity="center_horizontal"
     >
-    <LinearLayout
+
+    <WebView
+        android:id="@+id/wv_tutorial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Tutorial_How_to_Control_Background_Running_Apps"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="@string/Tutorial_introduce"
-            android:layout_marginTop="10dp"
-            />
+        />
 
-        <!-- ======================================== -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/Tutorial_Lock_App_in_Recent"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            />
-
-        <!-- set src bằng code java -->
-        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-            android:id="@+id/img_tutorial_001"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="5dp"
-            />
-        
-
-
-        <!-- ======================================== -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="@string/Tutorial_Enable_Autostart"
-            android:layout_marginTop="10dp"
-            />
-
-        <!-- set src bằng code java -->
-        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-            android:id="@+id/img_tutorial_002_1"
-            android:layout_width="350dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="5dp"
-            />
-        <!-- set src bằng code java -->
-        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-            android:id="@+id/img_tutorial_002_2"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="5dp"
-            />
-
-
-
-
-        <!-- ============================================ -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/Tutorial_App_Battery_Saver"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            />
-
-        <!-- set src bằng code java -->
-        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-            android:id="@+id/img_tutorial_003_1"
-            android:layout_width="350dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="5dp"
-            />
-        <!-- set src bằng code java -->
-        <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-            android:id="@+id/img_tutorial_003_2"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="5dp"
-            />
-
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

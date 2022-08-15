@@ -40,7 +40,7 @@ public class MyBroadcast extends BroadcastReceiver {
 
 
         // ========================================
-        // Xác định phần trăm pin
+        // Get Battery percent
         // Guides from developer.android.com
         int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
@@ -59,7 +59,7 @@ public class MyBroadcast extends BroadcastReceiver {
                 }
                 if (batteryPercent == 100) {
                     MyService.startAlarm(context);
-                    MainActivity.showDialog();
+                    MainActivity.showDialog_full_battery_charged();
                     showGifNotification(context, true);
                     isShowGifNotification = false;
                 }

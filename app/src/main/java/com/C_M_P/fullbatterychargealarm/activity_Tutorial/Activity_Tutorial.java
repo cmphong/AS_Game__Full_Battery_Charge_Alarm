@@ -6,68 +6,64 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.C_M_P.fullbatterychargealarm.MainActivity;
 import com.C_M_P.fullbatterychargealarm.R;
-import com.davemorrissey.labs.subscaleview.ImageSource;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
+
+import java.util.Locale;
 
 public class Activity_Tutorial extends AppCompatActivity {
 
-    SubsamplingScaleImageView iv_lock_app_in_recent,
-                                iv_setting_app_app_002,
-                                iv_setting_app_app_003,
-                                iv_autostart,
-                                iv_battery_saver;
+    WebView webView;
+    String locale;
+    String url;
+    String brand;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
+        locale = Locale.getDefault().getLanguage();
 
-        String locale = getResources().getConfiguration().getLocales().get(0).getLanguage();
+        webView = findViewById(R.id.wv_tutorial);
 
-        iv_lock_app_in_recent = (SubsamplingScaleImageView)findViewById(R.id.img_tutorial_001);
-        iv_lock_app_in_recent.setImage(ImageSource.resource(
-                locale.equals("vi")
-                ? R.drawable.tutorial_001_lock_app_in_recent_vi
-                : R.drawable.tutorial_001_lock_app_in_recent_en
-        ));
-
-        iv_setting_app_app_002 = (SubsamplingScaleImageView)findViewById(R.id.img_tutorial_002_1);
-        iv_setting_app_app_002.setImage(ImageSource.resource(
-                locale.equals("vi")
-                ? R.drawable.tutorial_002_setting_app_app_vi
-                : R.drawable.tutorial_002_setting_app_app_en
-        ));
-
-        iv_autostart = (SubsamplingScaleImageView)findViewById(R.id.img_tutorial_002_2);
-        iv_autostart.setImage(ImageSource.resource(
-                locale.equals("vi")
-                ? R.drawable.tutorial_002_autostart_vi
-                : R.drawable.tutorial_002_autostart_en
-        ));
-
-        iv_setting_app_app_003 = (SubsamplingScaleImageView)findViewById(R.id.img_tutorial_003_1);
-        iv_setting_app_app_003.setImage(ImageSource.resource(
-                locale.equals("vi")
-                ? R.drawable.tutorial_002_setting_app_app_vi
-                : R.drawable.tutorial_002_setting_app_app_en
-        ));
-
-        iv_battery_saver = (SubsamplingScaleImageView)findViewById(R.id.img_tutorial_003_2);
-        iv_battery_saver.setImage(ImageSource.resource(
-                locale.equals("vi")
-                ? R.drawable.tutorial_003_battery_saver_vi
-                : R.drawable.tutorial_003_battery_saver_en
-        ));
+        String brand = getIntent().getStringExtra(MainActivity.BRAND);
+        switch (brand){
+            case "xiaomi":
+                webView.loadUrl("https://dontkillmyapp.com/xiaomi");
+                break;
+            case "samsung":
+                webView.loadUrl("https://dontkillmyapp.com/samsung");
+                break;
+            case "huawei":
+                webView.loadUrl("https://dontkillmyapp.com/huawei");
+                break;
+            case "oneplus":
+                webView.loadUrl("https://dontkillmyapp.com/oneplus");
+                break;
+            case "meizu":
+                webView.loadUrl("https://dontkillmyapp.com/meizu");
+                break;
+            case "oppo":
+                webView.loadUrl("https://dontkillmyapp.com/oppo");
+                break;
+        }
 
 
-        Logd("Ngôn ngữ: " +locale);
+
+    }
 
 
+    class MyWebViewClient extends WebViewClient{
+        @Override
+        public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
+            return super.shouldOverrideKeyEvent(view, event);
+        }
     }
 
 

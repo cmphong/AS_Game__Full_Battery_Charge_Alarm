@@ -1,24 +1,18 @@
 package com.C_M_P.fullbatterychargealarm;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.AudioManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.service.notification.StatusBarNotification;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -28,7 +22,6 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +29,6 @@ import com.C_M_P.fullbatterychargealarm.activity_Tutorial.Activity_Tutorial;
 import com.C_M_P.fullbatterychargealarm.broadcast_receiver.MyBroadcast;
 import com.C_M_P.fullbatterychargealarm.service.MyService;
 import com.airbnb.lottie.LottieAnimationView;
-import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -44,6 +36,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.slider.Slider;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
@@ -57,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static MainActivity mainActivity;
 
+    public static final String BRAND = "BRAND";
     public static final String KEY_1 = "KEY_1";
     public static final String CHARGER_ALERT = "CHARGER_ALERT";
     public static final String KEY_isServiceRunning = "KEY_isServiceRunning";
@@ -75,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView iv_alarm_volume;
     private static LottieAnimationView lottie_animation_charge;
     private static LottieAnimationView lottie_animation_wave;
-    private SeekBar sb_alarm_volume;
+    private Slider sb_alarm_volume;
 
     private AdView mAdView;
 
@@ -93,17 +87,22 @@ public class MainActivity extends AppCompatActivity {
     // AdMob - Adaptive Banner
     private FrameLayout fl_ad_view_container;
     private AdView adView;
-    private final String ADMOB_UNITID_TESTAD = String.valueOf(R.string.adMob_unitID_TEST_AD);
-    private final String ADMOB_UNITID_REALLY = String.valueOf(R.string.adMob_unitID_REAL_AD);
 
     // In-App Review
     ReviewManager manager;
     ReviewInfo reviewInfo;
 
-    private static Dialog dialog;
-    private static LinearLayout ll_dialog_container;
-
-
+    private static Dialog dialog_full_charged;
+    private static LinearLayout ll_dialog_full_charged_container;
+    private TextView tv_dialog_info_app_title;
+    private TextView tv_dialog_info_app_content_xiaomi,
+                    tv_dialog_info_app_content_samsung,
+                    tv_dialog_info_app_content_huawei,
+                    tv_dialog_info_app_content_oneplus,
+                    tv_dialog_info_app_content_meizu,
+                    tv_dialog_info_app_content_oppo;
+    private Button btn_dialog_info_app_ok;
+    LinearLayout ll_dialog_info_app_container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
         initialAdMob();
 
         timer = new Timer();
+        dialog_full_charged = new Dialog(this);
 
-        dialog = new Dialog(this);
 
         // START - Adaptive AdMob ======================================
         fl_ad_view_container = findViewById(R.id.fl_ad_view_container);
         // Step 1 - Create an AdView and set the ad unit ID on it.
         adView = new AdView(this);
-        adView.setAdUnitId(ADMOB_UNITID_REALLY);
+        adView.setAdUnitId(getResources().getString(R.string.adMob_unitID_REAL_AD));
         fl_ad_view_container.addView(adView);
         loadBanner();
         // END - Adaptive AdMob ======================================
@@ -181,34 +180,18 @@ public class MainActivity extends AppCompatActivity {
         iv_info_app.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                showDialog_Info();
-
-//                Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//                intent.setData(Uri.parse("package:" + getPackageName()));
-//                startActivity(intent);
-
-                startActivity(new Intent(MainActivity.this, Activity_Tutorial.class));
+                showDialog_Info();
             }
         });
 
-        sb_alarm_volume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sb_alarm_volume.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
                 audioManager.setStreamVolume(
                         AudioManager.STREAM_MUSIC,
-                        progress,
+                        (int) value,
                         AudioManager.FLAG_PLAY_SOUND
                 );
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
 
@@ -222,6 +205,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
 //        Logd("onStop()");
@@ -230,21 +230,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static void showDialog() {
-        dialog.setContentView(R.layout.dialog_full_battery);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        // onclick event
-        ll_dialog_container = dialog.findViewById(R.id.dialog_full_battery_ll_container);
-        ll_dialog_container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(dialog.isShowing()) dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-
+    @Override
+    protected void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
     }
 
     // START - In-App Review ======================================================
@@ -350,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
         iv_alarm_volume.setImageResource(R.drawable.ic_sound_min);
 
         int mediaVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        sb_alarm_volume.setProgress(mediaVolume);
+        sb_alarm_volume.setValue(mediaVolume);
 
     }
 
@@ -360,18 +351,106 @@ public class MainActivity extends AppCompatActivity {
         iv_alarm_volume.setImageResource(R.drawable.ic_sound_min_disable);
     }
 
-    private void showDialog_Info() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-        alert.setTitle(R.string.Version);
-        alert.setMessage(R.string.v1_0_0);
-        alert.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+    public static void showDialog_full_battery_charged() {
+        dialog_full_charged.setContentView(R.layout.dialog_full_battery);
+        dialog_full_charged.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        // onclick event
+        ll_dialog_full_charged_container = dialog_full_charged.findViewById(R.id.dialog_full_battery_ll_container);
+        ll_dialog_full_charged_container.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                startInAppReview();
+            public void onClick(View v) {
+                if(dialog_full_charged.isShowing()) dialog_full_charged.dismiss();
             }
         });
-        alert.create();
-        alert.show();
+
+        dialog_full_charged.show();
+    }
+
+    private void showDialog_Info() {
+
+        // GET WIDTH SCREEN DEVICE
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float pxWidth = displayMetrics.widthPixels;
+
+
+        Dialog dialog_info = new Dialog(this);
+        dialog_info.setContentView(R.layout.dialog_info);
+
+        ll_dialog_info_app_container = dialog_info.findViewById(R.id.ll_dialog_info_app_container);
+        tv_dialog_info_app_title = dialog_info.findViewById(R.id.tv_dialog_info_app_title);
+        tv_dialog_info_app_content_xiaomi = dialog_info.findViewById(R.id.tv_dialog_info_app_content_xiaomi);
+        tv_dialog_info_app_content_samsung = dialog_info.findViewById(R.id.tv_dialog_info_app_content_samsung);
+        tv_dialog_info_app_content_huawei = dialog_info.findViewById(R.id.tv_dialog_info_app_content_huawei);
+        tv_dialog_info_app_content_oneplus = dialog_info.findViewById(R.id.tv_dialog_info_app_content_oneplus);
+        tv_dialog_info_app_content_meizu = dialog_info.findViewById(R.id.tv_dialog_info_app_content_meizu);
+        tv_dialog_info_app_content_oppo = dialog_info.findViewById(R.id.tv_dialog_info_app_content_oppo);
+        btn_dialog_info_app_ok = dialog_info.findViewById(R.id.btn_dialog_info_app_ok);
+
+        ll_dialog_info_app_container.getLayoutParams().width = (int) pxWidth - 200;
+
+        tv_dialog_info_app_title.setText(getResources().getString(R.string.Version) + " " +BuildConfig.VERSION_NAME);
+
+        // onclick event
+
+        tv_dialog_info_app_content_xiaomi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_Tutorial.class);
+                intent.putExtra(BRAND, "xiaomi");
+                startActivity(intent);
+            }
+        });
+        tv_dialog_info_app_content_samsung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_Tutorial.class);
+                intent.putExtra(BRAND, "samsung");
+                startActivity(intent);
+            }
+        });
+        tv_dialog_info_app_content_huawei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_Tutorial.class);
+                intent.putExtra(BRAND, "huawei");
+                startActivity(intent);
+            }
+        });
+        tv_dialog_info_app_content_oneplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_Tutorial.class);
+                intent.putExtra(BRAND, "oneplus");
+                startActivity(intent);
+            }
+        });
+        tv_dialog_info_app_content_meizu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_Tutorial.class);
+                intent.putExtra(BRAND, "meizu");
+                startActivity(intent);
+            }
+        });
+        tv_dialog_info_app_content_oppo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Activity_Tutorial.class);
+                intent.putExtra(BRAND, "oppo");
+                startActivity(intent);
+            }
+        });
+
+        btn_dialog_info_app_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_info.dismiss();
+//                startInAppReview();
+            }
+        });
+
+        dialog_info.show();
 
     }
 
@@ -406,8 +485,8 @@ public class MainActivity extends AppCompatActivity {
         return (int) result;
     }
 
-    public static void showChargingAnimation(boolean isShow){
-        if(isShow){
+    public static void showChargingAnimation(boolean isCharge){
+        if(isCharge){
             lottie_animation_charge.playAnimation();
             lottie_animation_charge.setVisibility(View.VISIBLE);
 
@@ -462,6 +541,7 @@ public class MainActivity extends AppCompatActivity {
         iv_alarm_volume         = findViewById(R.id.iv_alarm_volume);
         sb_alarm_volume         = findViewById(R.id.sb_alarm_volume);
     }
+
 
 
 
