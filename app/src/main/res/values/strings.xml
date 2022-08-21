@@ -35,8 +35,8 @@
 
 
     <!-- ===================================================== -->
-    <string name="adMob_unitID_TEST_AD" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="adMob_unitID_REAL_AD" translatable="false">ca-app-pub-9120003890050576/4463121829</string>
+<!--    <string name="adMob_unitID_TEST_AD" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="adMob_unitID_REAL_AD" translatable="false">ca-app-pub-9120003890050576/4463121829</string>-->
 <!--    <string name="adMob_unitID_REAL_AD" translatable="false">ca-app-pub-9120003890050576/1405164907</string>-->
 
 

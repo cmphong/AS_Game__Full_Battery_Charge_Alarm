@@ -14,6 +14,17 @@ android {
         versionName "1.1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        def ADMOB_APP_ID = properties.getProperty("ADMOB_APP_ID")
+        def ADMOB_UNIT_ID_TEST_AD = properties.getProperty("ADMOB_UNIT_ID_TEST_AD")
+        def ADMOB_UNIT_ID_REAL_AD = properties.getProperty("ADMOB_UNIT_ID_REAL_AD")
+        // for JAVA code
+        buildConfigField "String", "ADMOB_UNIT_ID_TEST_AD", "\"${ADMOB_UNIT_ID_TEST_AD}\""
+        buildConfigField "String", "ADMOB_UNIT_ID_REAL_AD", "\"${ADMOB_UNIT_ID_REAL_AD}\""
+        // for AndroidManifest.xml
+        manifestPlaceholders = [ADMOB_APP_ID: ADMOB_APP_ID]
     }
 
     buildTypes {
@@ -50,6 +61,7 @@ dependencies {
     // zoom image
 //    implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
 
-
+    // Hide API KEY
+//    implementation group: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin', name: 'secrets-gradle-plugin', version: '2.0.1'
 
 }

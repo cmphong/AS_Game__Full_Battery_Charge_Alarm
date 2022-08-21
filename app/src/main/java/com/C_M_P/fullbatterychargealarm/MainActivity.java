@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        String ADMOB_APP_ID = BuildConfig.ADMOB_APP_ID;
+
         mainActivity = this;
 
         initialComponents();
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         fl_ad_view_container = findViewById(R.id.fl_ad_view_container);
         // Step 1 - Create an AdView and set the ad unit ID on it.
         adView = new AdView(this);
-        adView.setAdUnitId(getResources().getString(R.string.adMob_unitID_REAL_AD));
+        adView.setAdUnitId(BuildConfig.ADMOB_UNIT_ID_REAL_AD);
         fl_ad_view_container.addView(adView);
         loadBanner();
         // END - Adaptive AdMob ======================================
